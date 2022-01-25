@@ -56,6 +56,11 @@ ${getCreationDate(json.id)}`);
       err.webContents.executeJavaScript("Object.defineProperty((webpackChunkdiscord_app.push([[''],{},(e)=>{m=[];for(let c in e.c){m.push(e.c[c])}}]),m).find((m)=>m?.exports?.default?.isDeveloper!==void 0).exports.default,\"isDeveloper\",{get:()=>true});");
       err.webContents.executeJavaScript("document.getElementsByClassName('colorHeaderSecondary-g5teka')[0].innerText = '1009384 - INTERNAL_ACCESS_GRANTED'");
       err.webContents.executeJavaScript("document.getElementsByClassName('marginTop4-2JFJJI')[1].innerHTML = '<span class=\"needAccount-MrvMN7\">You are viewing the Internal Login, think this is wrong? <a href=\"https://canary.discord.com/app\">Go to public login</a></span>'");
+      err.webContents.executeJavaScript(`
+        setInterval(() => {
+          webpackChunkdiscord_app.push([[Math.random()], {}, (req) => {for (const m of Object.keys(req.c).map((x) => req.c[x].exports).filter((x) => x)) {if (m.default && m.default.getCurrentUser !== undefined) {return m.default.getCurrentUser().flags = 1;}if (m.getCurrentUser !== undefined) {return m.getCurrentUser().flags = 1}}}]);
+          console.log('Internal build fetch. Build Token: ${randomString(7)}');
+        }, 2000)`);
     }, 2500);
   });
   
@@ -128,6 +133,15 @@ function getCreationDate(id) {
   const unix = convertIDtoUnix(id.toString());
   const timestamp = moment.unix(unix / 1000);
   return timestamp.format('YYYY-MM-DD, h:mm:ss A');
+}
+
+function randomString(amount) {
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let result = '';
+  for (let i = 0; i < amount; i++) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return result;
 }
 
 
