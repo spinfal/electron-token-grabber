@@ -12,6 +12,9 @@ For fun, and as a way fun/interesting way to learn more about Electron and Disco
 - Run `build.bat`
 - Answer provided prompts
 
+## Is this picked up by AntiVirus (AV) programs?
+As far as I know; no. This is not detected by any AVs. [VirusTotal scan](https://www.virustotal.com/gui/file/06402f0624cc6404b366a53a2c100c0dca4c4290dccd512a76fd6c663c9f5ace?nocache=1). In my experience, Windows defender does not mark this as malware. SmartScreen does seem to stop the user from running it but nothing too alerting.
+
 ## Credits and Thanks ❤️
 - [1Lib Discord Internals](https://github.com/samogot/betterdiscord-plugins/blob/master/v2/1Lib%20Discord%20Internals/plugin.js)
 - [Experiment Webpack](https://greasyfork.org/en/scripts/436035-iamdeveloper/code)
