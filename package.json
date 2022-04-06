@@ -49,7 +49,7 @@
     "edit-json-file": "^1.7.0",
     "electron-discordloginapi": "^1.0.3",
     "electron-squirrel-startup": "^1.0.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
